@@ -1,0 +1,76 @@
+---
+name: "distill"
+output_dir: "_site"
+title: ""
+navbar:
+  right:
+    - text: "Riders"
+      href: https://www.procyclingstats.com/race/tour-de-france/2026/startlist
+    - text: "Route"
+      href: https://www.letour.fr/en/overall-route
+  left:
+    - text: "Results"
+      href: 
+      menu:
+        - text: "Stage 1"
+          href: 
+        - text: "Stage 2"
+          href: 
+        - text: "Stage 3"
+          href: 
+        - text: "Stage 4"
+          href: 
+        - text: "Stage 5"
+          href: 
+        - text: "Stage 6"
+          href: 
+        - text: "Stage 7"
+          href: 
+        - text: "Stage 8"
+          href: 
+        - text: "Stage 9"
+          href: 
+        - text: "Stage 10"
+          href: 
+        - text: "Stage 11"
+          href: 
+        - text: "Stage 12"
+          href: 
+        - text: "Stage 13"
+          href: 
+        - text: "Stage 14"
+          href: 
+        - text: "Stage 15"
+          href: 
+        - text: "Stage 16"
+          href: 
+        - text: "Stage 17"
+          href: 
+        - text: "Stage 18"
+          href: 
+        - text: "Stage 19"
+          href: 
+        - text: "Stage 20"
+          href: 
+        - text: "Stage 21"
+          href: 
+    - text: "Standings"
+      href:
+      menu:
+        - text: "Overall Standings"  
+          href: 
+        - text: "Points Standings"  
+          href: 
+    - text: "Teams"
+      href: Teams.html
+    - text: "Rules"
+      href: rules.html
+          
+    - icon: logo.png
+      href: https://github.com/rstudio/distill
+      
+output:
+distill::distill_article:
+  css: styles.css
+
+---
