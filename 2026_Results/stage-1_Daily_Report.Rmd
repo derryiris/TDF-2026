@@ -1,0 +1,806 @@
+
+```{r include=FALSE}
+library (data.table)
+library(tidyverse)
+library (readxl)
+library (rvest)
+library(tidyverse)
+library (gridExtra)
+library(grid)
+library(gtable)
+
+library (readxl)
+library (tidyverse)
+library (stringr)
+library (stringi)
+##library(xlsx)
+library (hms)
+library(ggimage)
+library(ggrepel)
+library(patchwork)
+library(cowplot)
+library(ggforce)
+library(magick)
+library(fs)
+
+library(rvest)
+library(dplyr)
+```
+
+
+```{r set up day, include=FALSE}
+
+todays_stage<-"stage-1"
+route<-fread("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Route_2026.txt")
+route$Date<- gsub("26", "2026", route$Date) %>% as.Date(route$Date, format = "%m/%d/%Y")
+date<-Sys.Date()
+route_filtered<-route %>% dplyr::filter(Date<=date & Distance !="")
+stages<-route_filtered$Details
+course<-route %>% dplyr::filter(Details==todays_stage) %>% pull(Start.and.Finish)
+
+Title<-route %>% dplyr::filter(Details==todays_stage) %>% pull(Stage) %>% paste("STAGE", ., sep=" ")
+
+```
+
+
+---
+title: "`r format(Title)`"
+author: "`r format(course)`"
+date: "`r format(date, '%d %B, %Y')`"
+fontsize: 11pt
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+  word_document: default
+fontfamily: mathpazo
+classoption: landscape
+
+
+header-includes:
+- \newcommand{\bcenter}{\begin{center}}
+- \newcommand{\ecenter}{\end{center}}
+- \pagenumbering{gobble}
+
+---
+
+
+<style type="text/css">
+
+h1.title {
+  font-size: 38px;
+  color: DarkRed;
+  text-align: center;
+}
+h4.author { /* Header 4 - and the author and data headers use this too  */
+    font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkRed;
+  text-align: center;
+}
+h4.date { /* Header 4 - and the author and data headers use this too  */
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: DarkBlue;
+  text-align: center;
+}
+</style>
+
+
+$~$
+
+
+
+
+```{r Insert Logo Figurea , echo=FALSE, fig.align='center', out.width="1000px"}
+
+
+
+knitr::include_graphics(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Stage_Profiles/", todays_stage,".png"))
+
+```
+
+
+$~$
+
+$~$
+
+
+```{r Insert Logo Figureb , echo=FALSE, fig.align='center', out.width="200px"}
+
+knitr::include_graphics("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/logo.png")
+
+```
+
+
+
+```{r Download daily data, include=FALSE}
+
+#Stage_dates & route
+
+
+
+daily_result<-data.frame()
+
+for (i in 1:length(stages)){
+  Stage_no<-stages[i]
+  url_temp<-paste0("https://www.letour.fr/en/webview/rankings/",Stage_no,  "/true/itg?hasCookies=false&isWebview=true&isRacecenter=true")
+  table_temp<-read_html(url_temp)  %>% html_elements("table") %>%  html_table() %>% as.data.frame()
+  table_temp<-cbind(table_temp, Stage_no)
+  daily_result<-rbind(daily_result, table_temp)
+}
+
+daily_result$Hour<-as.numeric(gsub("h.*", "", daily_result$Times))
+daily_result$Minute<-  gsub(".*h ", "", daily_result$Times)
+daily_result$Minute<-  as.numeric(gsub("'.*", "", daily_result$Minute))
+daily_result$Second<-gsub(".* ", "", daily_result$Times)
+daily_result$Second<-  as.numeric(gsub("''", "", daily_result$Second))
+daily_result$total_seconds<-(daily_result$Hour*60*60)+(daily_result$Minute*60)+(daily_result$Second)
+
+daily_result$time<-lubridate::seconds_to_period(daily_result$total_seconds)
+
+
+name<-paste("Stages_master", as.character(Sys.Date()), sep="_")
+assign(name, daily_result)
+
+write.table(daily_result,file=paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", stages, "_stages_master_",as.character(Sys.Date()),".txt", sep=""), sep="\t",  row.names = F)
+
+#stages<-route %>% dplyr::filter(Date<=date & Start.and.Finish !="rest day" ) %>% pull(Details)
+
+```
+
+```{r Daily results table, include=FALSE}
+
+
+df<-read_excel("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Teams.xlsx", sheet="df1") 
+
+daily<-daily_result %>% dplyr::filter(Stage_no==stages[length(stages)])
+
+
+stage_df<-merge(df, daily, by.x="Rider_1", by.y="Rider", all.x=T) 
+
+
+write.table(stage_df,file=paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_results_",as.character(Sys.Date()),".txt", sep=""), sep="\t",  row.names = F)
+
+
+
+
+competitors<-unique(stage_df$Name)
+
+
+final<-data.frame()
+
+
+for (i in 1:length(competitors)){
+  temp<-stage_df[,-18] %>% as.data.frame() %>% dplyr::filter(Name == competitors[i]) %>% dplyr::arrange(total_seconds,Rank, Rider_1)
+  
+  rider_1=temp[1,c(1,6,17)]
+  rider_2=temp[2,c(1,6,17)]
+  rider_3=temp[3,c(1,6,17)] 
+  
+  Average_Rank=round(mean(temp$Rank,na.rm=T),1)
+  
+  temp2<-cbind(competitors[i],unique(temp$Team.x),rider_1, rider_2, rider_3, Average_Rank )
+  
+  colnames (temp2)<- c("Name", "Team", "Rider1","Rider1_Rank", "Rider1_Time", "Rider2", "Rider2_Rank","Rider2_Time", "Rider3","Rider3_Rank", "Rider3_Time", "Average_Rank_All")
+  
+  temp2$Stage_Time_secs<-(temp2$Rider1_Time+temp2$Rider2_Time+temp2$Rider3_Time)
+  
+  temp2$Stage_Time<-lubridate::seconds_to_period(temp2$Rider1_Time+temp2$Rider2_Time+temp2$Rider3_Time)
+  
+  temp2$Rider1_Time<-lubridate::seconds_to_period(temp2$Rider1_Time)
+  temp2$Rider2_Time<-lubridate::seconds_to_period(temp2$Rider2_Time)
+  temp2$Rider3_Time<-lubridate::seconds_to_period(temp2$Rider3_Time)
+  
+  temp2$Average_Rank_top3<-round((temp2$Rider1_Rank+temp2$Rider2_Rank+temp2$Rider3_Rank)/3,1)
+  
+  final<-rbind(final, temp2)
+  
+}
+
+final<-final %>% dplyr::arrange(Stage_Time, Average_Rank_top3, Average_Rank_All)
+
+winning_time<-final$Stage_Time_secs[1]
+
+final$Gap<-final$Stage_Time_secs-winning_time
+
+final$Gap<-ifelse(final$Gap==0, "", final$Gap)
+
+final$Gap<-ifelse(final$Gap=="", "", paste0("+ ", final$Gap, " secs"))
+
+final$Position<-c("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th")
+
+final<-final %>% dplyr::select ("Name","Team",  "Rider1","Rider1_Rank", "Rider2", "Rider2_Rank","Rider3","Rider3_Rank",  "Average_Rank_top3", "Average_Rank_All","Stage_Time", "Gap", "Position")
+
+final$Gap[1]<-""
+
+cols <- matrix("black", nrow(final), ncol(final))
+cols[1,1:12] <- c("gold")
+cols[2,1:12] <- c("grey70")
+cols[3,1:12] <-c("#CD7F32")
+
+cols2<-matrix("white", nrow(final), ncol(final))
+
+
+
+t <- tableGrob(final[,-1], rows=NULL, theme = ttheme_default(colhead = list(fg_params = list(rot = 90,cex = 2)), core = list(fg_params = list(cex = 2.5,  col = cols, fontface="bold" ), bg_params=list(fill=cols2)), padding = unit(c(10, 12), "mm")))
+
+title<-textGrob(paste(toupper(Stage_no), "Results Table", sep=" "), gp = gpar(fontsize = 30, fontface = "bold"))
+t <- gtable_add_rows(t, heights = grobHeight(title) + unit(20, "mm"), pos = 0)
+t<- gtable_add_grob(t, title, t = 1, l = 1, r = ncol(t))
+
+
+
+
+ggsave(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_results_table_", as.character(Sys.Date()), ".jpg", sep=""),t, height=18, width=35, dpi=300,  units="in", bg = "white")
+
+
+
+```
+
+
+```{r Podium, include=FALSE}
+
+pod<-final[1:3,1:2]
+pod$x<-c(2,1,3)
+pod$y<-c(3.0,2.2,1.8)
+
+
+P1<-ggplot(pod, aes(x=x,y=y))+
+  geom_image(data=pod[1,], image=paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/bobbles/",pod[1,1],".png"), size=0.2)+
+  geom_image(data=pod[2,], image=paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/bobbles/",pod[2,1],".png"), size=0.28)+
+  geom_image(data=pod[3,], image=paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/bobbles/",pod[3,1],".png"), size=0.2)+
+  theme_void()+
+  scale_x_continuous(limits=c(0,4))+
+  scale_y_continuous(limits=c(0,4))+
+geom_rect(aes(xmin = 0.5, ymin = 0, xmax = 1.5, ymax = 1.35), fill = "#C0C0C0", color="black")+
+geom_rect(aes(xmin = 1.5, ymin = 0, xmax = 2.5, ymax = 2.1), fill =  "#FFD700", color="black")+
+geom_rect(aes(xmin = 2.5, ymin = 0, xmax = 3.5, ymax = 0.85), fill =  "#CD7F32", color="black")+
+  annotate("text", label=str_wrap(pod$Team[2], width = 10)  , x=1, y=1.05, hjust=0.5,size=5, fontface=c("bold.italic"))+
+annotate("text", label=str_wrap(pod$Team[1], width = 10) , x=2, y=1.8, hjust=0.5,size=5, fontface=c("bold.italic"))+
+  annotate("text", label=str_wrap(pod$Team[3], width = 10)   , x=3, y=0.55, hjust=0.5,size=5, fontface=c("bold.italic"))
+
+
+  
+ggsave(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_podium_", as.character(Sys.Date()), ".jpg", sep=""),P1, height=5.5, width=9, dpi=300,  units="in", bg = "white")
+
+```
+
+$~$
+
+$~$
+
+$~$
+
+$~$
+
+  
+ <hr style="height:1px;border:none;color:#333;background-color:#333;">
+ 
+
+<center>    <p style="font-size: 20pt;">**DAILY RESULTS**</center></p>
+
+```{r Insert podium figure , echo=FALSE, fig.align='center', out.width="800px"}
+
+knitr::include_graphics(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_podium_", as.character(Sys.Date()), ".jpg", sep=""))
+
+```
+
+$~$
+
+$~$
+
+
+```{r Insert Table1 , echo=FALSE, fig.align='center', out.width="1600px"}
+
+knitr::include_graphics(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_results_table_", as.character(Sys.Date()), ".jpg", sep=""))
+
+```
+
+$~$
+
+$~$
+
+
+$~$
+
+$~$
+
+$~$
+
+
+```{r create daily results figure v2, include=FALSE}
+
+
+final$Team<-factor(final$Team, levels=c(rev(final$Team)))
+
+final$Stage_Time_secs<-period_to_seconds(final$Stage_Time)
+
+winning_time<-final %>% dplyr::arrange (Stage_Time_secs) %>% pull(Stage_Time_secs) %>% .[1]
+
+final$Difference<-final$Stage_Time_secs-winning_time
+
+final$keep<-if_else(final$Difference<(30*60), "keep", "drop")
+
+final$Difference<-paste(final$Difference, "sec", sep=" ")
+
+
+final2<-final %>% dplyr::select(Name, Team, Stage_Time_secs, Difference,Average_Rank_top3, Average_Rank_All, keep) %>% dplyr::ungroup(.)
+
+
+winning_time<-final2 %>%  .[1,3]  
+losing_time<-final2  %>% .[nrow(final2),3]
+range<-losing_time-winning_time
+
+
+
+final2$Difference<-final2$Stage_Time_secs-winning_time
+final2$Percent<-(final2$Difference/range)*100
+final2$differences <- c(0,diff(final2$Percent))
+
+first_exceed_index <- which(final2$differences > 30)[1]
+z<-ifelse(is.na(first_exceed_index) , length(competitors), first_exceed_index-1)
+  
+keep1<-c(rep("keep", z), rep("drop", length(competitors)-z))
+
+
+final2$Difference<-seconds_to_period(final2$Difference)
+
+duplicated<-duplicated(final2$Stage_Time_secs) 
+small_increments <- seq(from =0.001, by = 0.001, length.out = sum(duplicated))
+
+final2$Overall_Time2<-final2$Stage_Time_secs
+final2$Overall_Time2[duplicated] <- final2$Overall_Time[duplicated] + small_increments
+
+final_label_data<-final2 %>% dplyr::mutate(zoom = if_else(final2$keep=="drop",FALSE, NA ))
+final_label_data<-final_label_data %>% dplyr::arrange(Stage_Time_secs, -Average_Rank_top3, -Average_Rank_All)
+
+
+
+P1<-ggplot(final2, aes(x= Overall_Time2, y=1))+
+  
+  geom_point(color="white", alpha=0.1)+
+  
+  scale_x_reverse(breaks=final2$Stage_Time_secs, labels=final2$Difference)+
+  scale_y_discrete(expand = c(0.15, 0) )+
+  
+  theme_light()+
+  theme(axis.text.x = element_text(angle=45, face="bold", size=14, hjust=1))+
+  theme(axis.text.y = element_blank())+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       panel.background = element_blank())+
+  theme(plot.title = element_text(size=20,hjust = 0.5, face="bold"))+
+  
+  geom_hline(yintercept=final2$Time,linetype="dotted", color = "black", linewidth=0.2 )+
+  labs(x="", y="")+
+  
+  geom_image(data=final2[c(16:2),],aes(x= Stage_Time_secs, y=1, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Bikes/bike.png"), size = 0.18 )+ 
+  geom_image(data=final2[c(1),],aes(x= Stage_Time_secs, y=1, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Bikes/first.png"), size = 0.165, nudge_y=0.01, nudge_x=0.1 )+
+ geom_image(data=final2[c(17),],aes(x= Stage_Time_secs, y=1, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Bikes/last.png"),nudge_y=0.022, size = 0.18, nudge_x=-1 )+
+  
+  
+  #geom_text_repel(data=final_label_data, aes(x=x, label=label_text), angle=90, vjust=0, force_pull = 0, nudge_y = 0.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, color="blue",segment.color="black", fontface="bold")+
+geom_text_repel(data=final_label_data, aes(label = forcats::fct_reorder2(Team, Stage_Time_secs, Average_Rank_top3)), angle=90, vjust=0, force_pull = 0, nudge_y = 0.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, color="blue",segment.color="black", fontface="bold")+
+
+ 
+  ggtitle(toupper(Stage_no))+
+  
+  
+  ggforce::facet_zoom (x=keep=="keep", zoom.size = 1, zoom.data=zoom)+
+  
+  theme(zoom.x = element_rect(fill = "grey90", color = NA))
+
+
+P1a<-ggplot(final2, aes(x= Overall_Time2, y=1))+
+  
+  geom_point(color="white", alpha=0.1)+
+  
+  scale_x_reverse(breaks=final2$Stage_Time_secs, labels=final2$Difference)+
+  scale_y_discrete(expand = c(0.15, 0) )+
+  
+  theme_light()+
+  theme(axis.text.x = element_text(angle=45, face="bold", size=14, hjust=1))+
+  theme(axis.text.y = element_blank())+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       panel.background = element_blank())+
+  theme(plot.title = element_text(size=20,hjust = 0.5, face="bold"))+
+  
+  geom_hline(yintercept=final2$Time,linetype="dotted", color = "black", linewidth=0.2 )+
+  labs(x="", y="")+
+  
+  geom_image(data=final2[c(16:2),],aes(x= Stage_Time_secs, y=1, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Bikes/bike.png"), size = 0.18 )+ 
+  geom_image(data=final2[c(1),],aes(x= Stage_Time_secs, y=1, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Bikes/first.png"), size = 0.165, nudge_y=0.01, nudge_x=0.1 )+
+ geom_image(data=final2[c(17),],aes(x= Stage_Time_secs, y=1, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/Bikes/last.png"),nudge_y=0.022, size = 0.18, nudge_x=-1 )+
+  
+  
+ #  geom_text_repel(data=final_label_data, aes(x=x, label=label_text), angle=90, vjust=0, force_pull = 0, nudge_y = 0.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, color="blue",segment.color="black", fontface="bold")+
+geom_text_repel(data=final_label_data, aes(label = forcats::fct_reorder2(Team, Stage_Time_secs, Average_Rank_top3)), angle=90, vjust=0, force_pull = 0, nudge_y = 0.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, color="blue",segment.color="black", fontface="bold")+
+
+ 
+  ggtitle(toupper(Stage_no))
+
+
+
+first_exceed_index<-NaN
+
+
+ifelse(is.na(first_exceed_index),
+      ggsave(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no,"_results_figure_",Sys.Date(), ".jpg"),P1a, height=8, width=25, dpi=400,  units="in", bg = "white"),
+      ggsave(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no,"_results_figure_",Sys.Date(), ".jpg"),P1, height=12, width=25, dpi=400,  units="in", bg = "white"))
+
+```
+
+```{r Insert Figure1, echo=FALSE, fig.align='center', out.width="1600px"}
+
+knitr::include_graphics(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no,"_results_figure_",Sys.Date(), ".jpg"))
+
+```
+
+$~$
+
+$~$
+
+$~$
+
+$~$
+
+$~$
+
+$~$
+
+
+
+
+```{r Create Overall results table, include=FALSE}
+
+stage_df2<-merge(df, daily_result, by.x="Rider_1", by.y="Rider", all.x=T) 
+
+write.table(stage_df2,file=paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_combined_results_upto",as.character(Sys.Date()),".txt", sep=""), sep="\t",  row.names = F)
+
+##calculate overall standings for all stages up to now
+overall_standings<-data.frame(Team.x=(unique(stage_df2$Team.x)), Overall_Time=0, Average_Rank_top3=0, Average_Rank_all=0) %>% dplyr::arrange(Team.x)
+
+temp<-stage_df2 %>%  dplyr::group_by(Team.x, Stage_no)  %>% dplyr::arrange(total_seconds, Rank) %>% slice_head(n=3) %>% ungroup() %>% dplyr::group_by(Team.x) %>% summarise(Overall_Time=sum(total_seconds))
+overall_standings[,2]<-overall_standings[,2] + temp[,2]
+
+temp1<-stage_df2 %>%  dplyr::group_by(Team.x, Stage_no)  %>% dplyr::arrange(total_seconds, Rank) %>% slice_head(n=3) %>% ungroup() %>% dplyr::group_by(Team.x) %>% summarise(Average_Rank_top3=mean(Rank))
+overall_standings[,3]<-(overall_standings[,3] + temp1$Average_Rank_top3)
+
+temp2<-stage_df2  %>% dplyr::group_by(Team.x)  %>% dplyr::arrange(total_seconds, Rank) %>%  summarise( Average_Rank_all=mean(Rank, na.rm=T))
+overall_standings[,4]<-(overall_standings[,4] + temp2$Average_Rank_all)
+
+overall_standings<-overall_standings %>% dplyr::arrange(Overall_Time, Average_Rank_top3, Average_Rank_all) %>% dplyr::mutate(Position=c("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th"), Number=c(1:17)) %>% dplyr::arrange(Team.x)
+
+
+##calculate overall standings for previous stage before todays stage
+
+#overall_standings_previous<-data.frame(Team.x=(unique(stage_df2$Team.x)), Overall_Time=0, Average_Rank_top3=0, Average_Rank_all=0) %>% dplyr::arrange(Team.x)
+
+#temp<-stage_df2 %>%  dplyr::filter(Stage_no %in% stages[-length(stages)]) %>% dplyr::group_by(Team.x, Stage_no)  %>% dplyr::arrange(total_seconds, Rank) %>% slice_head(n=3) %>% ungroup() %>% dplyr::group_by(Team.x) %>% summarise(Overall_Time=sum(total_seconds))
+
+#overall_standings_previous[,2]<-overall_standings_previous[,2] + temp[,2]
+
+#temp1<-stage_df2 %>%  dplyr::filter(Stage_no %in% stages[-length(stages)])%>%  dplyr::filter(Stage_no %in% stages[-length(stages)])%>%  dplyr::group_by(Team.x, Stage_no)  %>% dplyr::arrange(total_seconds, Rank) %>% slice_head(n=3) %>% ungroup() %>% dplyr::group_by(Team.x) %>% summarise(Average_Rank_top3=mean(Rank))
+#overall_standings_previous[,3]<-(overall_standings_previous[,3] + temp1$Average_Rank_top3)
+
+#temp2<-stage_df2  %>%  dplyr::filter(Stage_no %in% stages[-length(stages)])%>% dplyr::group_by(Team.x)  %>% dplyr::arrange(total_seconds, Rank) %>%  summarise( Average_Rank_all=mean(Rank))
+#overall_standings_previous[,4]<-(overall_standings_previous[,4] + temp2$Average_Rank_all)
+
+#overall_standings_previous<-overall_standings_previous %>% dplyr::arrange(Overall_Time, Average_Rank_top3, Average_Rank_all) %>% dplyr::mutate(Position=c("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th"), Number=c(1:14))%>% dplyr::arrange(Team.x) 
+
+
+
+#overall_standings$Change<-overall_standings_previous$Number-overall_standings$Number
+#overall_standings<-overall_standings%>%dplyr::mutate(Gap=Overall_Time-min(Overall_Time))
+
+#overall_standings<- overall_standings %>% dplyr::rename(Team=Team.x) %>% dplyr::select(Team, Average_Rank_top3, Average_Rank_all, Overall_Time,Gap, Change, Position) %>% dplyr::arrange(Overall_Time, Average_Rank_top3, Average_Rank_all)
+
+#overall_standings$Overall_Time<-seconds_to_period(overall_standings$Overall_Time)
+#overall_standings$Gap<-paste("+",seconds_to_period(overall_standings$Gap), sep=" ")
+#overall_standings$Gap[1]<-"-"
+
+#overall_standings$Change<-ifelse(overall_standings$Change>0, paste0("+", overall_standings$Change) ,
+#                          ifelse(overall_standings$Change==0,"",       overall_standings$Change))
+
+#overall_standings$Average_Rank_top3<-round(overall_standings$Average_Rank_top3,1)
+#overall_standings$Average_Rank_all<-round(overall_standings$Average_Rank_all,1)                        
+
+
+##FOLOOWING SPECIFIC TO STAGE 1##
+overall_standings<-overall_standings%>%dplyr::mutate(Gap=Overall_Time-min(Overall_Time), Average_Rank_all=round(overall_standings$Average_Rank_all,1) ,Average_Rank_top3=round(overall_standings$Average_Rank_top3,1) ) %>% dplyr::rename(Team=Team.x) %>% dplyr::select(Team,Average_Rank_top3, Average_Rank_all,Overall_Time, Gap, Position  ) %>% dplyr::arrange(Overall_Time, Average_Rank_top3, Average_Rank_all)
+
+overall_standings$Gap<-paste("+",overall_standings$Gap, " Sec", sep=" ")
+overall_standings$Gap[1]<-"-"
+
+
+
+cols <- matrix("black", nrow(overall_standings), ncol(overall_standings))
+cols[1,1:ncol(overall_standings)] <- c("gold")
+cols[2,1:ncol(overall_standings)] <- c("grey70")
+cols[3,1:ncol(overall_standings)] <-c("#CD7F32")
+
+cols2<-matrix("white", nrow(overall_standings), ncol(overall_standings))
+
+
+t <- tableGrob(overall_standings, rows=NULL, theme = ttheme_default(colhead = list(fg_params = list(rot = 90,cex = 2)), core = list(fg_params = list(cex = 2,  col = cols, fontface="bold" ), bg_params=list(fill=cols2)), padding = unit(c(10, 12), "mm")))
+
+title<-textGrob(paste( "Overall Standings after ", toupper(Stage_no),sep=" "), gp = gpar(fontsize = 20, fontface = "bold"))
+t <- gtable_add_rows(t, heights = grobHeight(title) + unit(20, "mm"), pos = 0)
+t<- gtable_add_grob(t, title, t = 1, l = 1, r = ncol(t))
+
+
+
+ggsave(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_overall_standings_table_after_", Stage_no,"_", Sys.Date(),".jpg", sep=""),t, height=18, width=12, dpi=1000,  units="in", bg = "white")
+
+ggsave("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/current_overall.png",t, height=18, width=12, dpi=1000,  units="in", bg = "white")
+
+
+```
+
+
+```{r Insert Table2, eval=FALSE, fig.align='center', include=FALSE, out.width="1600px"}
+
+knitr::include_graphics(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no, "_overall_standings_table_after_", Stage_no,"_", Sys.Date(), ".jpg", sep=""))
+
+```
+
+$~$
+
+$~$
+
+
+
+```{r create overall results figure, eval=FALSE, include=FALSE}
+
+
+overall_standings$Team<-factor(overall_standings$Team, levels=c(rev(overall_standings$Team)))
+
+overall_standings$Overall_Time<-seconds_to_period(overall_standings$Overall_Time)
+overall_standings$Overall_Time<-period_to_seconds(overall_standings$Overall_Time)
+
+winning_time<-overall_standings %>% dplyr::arrange (Overall_Time) %>% pull(Overall_Time) %>% .[1]
+losing_time<-overall_standings %>% dplyr::arrange (Overall_Time) %>% pull(Overall_Time) %>% .[nrow(overall_standings)]
+range<-losing_time-winning_time
+
+
+
+overall_standings$Difference<-overall_standings$Overall_Time-winning_time
+overall_standings$Percent<-(overall_standings$Difference/range)*100
+overall_standings$differences <- c(0,diff(overall_standings$Percent))
+
+first_exceed_index <- which(overall_standings$differences > 30)[1]
+z<-ifelse(is.na(first_exceed_index) , length(competitors), first_exceed_index-1)
+  
+keep1<-c(rep("keep", z), rep("drop", length(competitors)-z))
+   
+
+for (i in 1:length(competitors)){
+ overall_standings$keep[i]<-ifelse(is.na(first_exceed_index), "keep", keep1[i])                            
+}
+
+overall_standings$Difference<-seconds_to_period(overall_standings$Difference)
+
+overall_standings$Team<-factor(overall_standings$Team, levels=overall_standings$Team)
+
+overall_standings2<-overall_standings
+#overall_standings2<-overall_standings %>% dplyr::select( Team, Overall_Time,Average_Rank_top3, Average_Rank_all, Difference,Position, keep, Change) %>% dplyr::ungroup(.)
+
+#overall_standings2$color_vector<-ifelse(str_detect(overall_standings2$Change,"\\+")==TRUE, "mediumseagreen", 
+ #                ifelse(str_detect(overall_standings2$Change,"\\-")==TRUE, "red", "grey"   ) )
+
+
+#overall_standings2$color_vector2<-ifelse(str_detect(overall_standings2$Change,"\\+")==TRUE, "mediumseagreen", 
+#                 ifelse(str_detect(overall_standings2$Change,"\\-")==TRUE, "red", "blue"   ) )
+
+
+duplicated<-duplicated(overall_standings2$Overall_Time) 
+small_increments <- seq(from =0.001, by = 0.001, length.out = sum(duplicated))
+
+overall_standings2$Overall_Time2<-overall_standings2$Overall_Time
+overall_standings2$Overall_Time2[duplicated] <- overall_standings2$Overall_Time[duplicated] + small_increments
+
+
+
+
+#overall_standings_label_data<- data.frame(
+ # Overall_Time = overall_standings2$Overall_Time,
+ # y = 1,
+ # label_text = overall_standings2$Team,
+ # label_text2 = overall_standings2$Change,
+ # zoom = if_else(overall_standings2$keep=="drop",FALSE, NA ),
+ # color=color_vector,
+ # color2=color_vector2
+ # )
+
+
+overall_standings_label_data<-overall_standings %>% dplyr::mutate(label_text = overall_standings2$Team,
+  label_text2 = overall_standings2$Change,
+  zoom = if_else(overall_standings2$keep=="drop",FALSE, NA ),
+  color=overall_standings2$color_vector,
+  color2=overall_standings2$color_vector2)
+
+color=overall_standings2$color_vector2
+color2=overall_standings2$color_vector
+
+
+final_image3<-if(str_detect(overall_standings2[nrow(overall_standings2), 8],"-" )==TRUE){
+  "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/last_flip.png"} else {"/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/last.png"}
+
+
+P1<-ggplot(overall_standings2, aes(x= Overall_Time, y=1))+
+  
+  geom_point(color="white", alpha=0.1)+
+  
+  scale_x_reverse(breaks=overall_standings2$Overall_Time, labels=overall_standings2$Difference)+
+  scale_y_continuous(limits=c(0,2))+
+  
+  theme_light()+
+  theme(axis.text.x = element_text(angle=45, face="bold", size=14, hjust=1))+
+  theme(axis.text.y = element_blank())+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       panel.background = element_blank())+
+  theme(plot.title = element_text(size=20,hjust = 0.5, face="bold"))+
+  
+  geom_hline(yintercept=overall_standings2$Time,linetype="dotted", color = "black", linewidth=0.2 )+
+  labs(x="", y="")+
+  
+  geom_image(data=overall_standings2[(2:(length(competitors)-1)),] ,aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/bike.png"), size = 0.2 )+
+  
+#  geom_image(data=overall_standings2[(2:(length(competitors)-1)),] %>%dplyr::filter(Change==""),aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/bike.png"), size = 0.2 )+ 
+  #geom_image(data=overall_standings2[(2:(length(competitors)-1)),] %>%dplyr::filter(str_detect(Change,"-")==TRUE),aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/red_bike.png"), size = 0.2 )+ 
+ #   geom_image(data=overall_standings2[(2:(length(competitors)-1)),] %>%dplyr::filter(str_detect(Change,"\\+")==TRUE),aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/green_bike.png"), size = 0.2 )+
+  geom_image(data=overall_standings2[c(1),],aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/first.png"), size = 0.2, nudge_y=0.05, nudge_x=0.1 )+
+ geom_image(data=overall_standings2[c(17),],aes(x= Overall_Time,y=0.3, image =  "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/last_flip.png"), size = 0.2 )+
+  
+  
+#geom_text_repel(data=overall_standings_label_data, aes(color=color2,x=Overall_Time, y=0.3, label=label_text), angle=90, vjust=0, force_pull = 0, nudge_y = 1.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, segment.color="black", fontface="bold", show.legend = F)+
+  
+  geom_text_repel(data=overall_standings_label_data, aes(label = forcats::fct_reorder2(Team, Overall_Time, Average_Rank_top3)), angle=90, vjust=0, force_pull = 0, nudge_y = 0.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, color="blue",segment.color="black", fontface="bold")+
+
+  
+ geom_text_repel(data=overall_standings_label_data, aes(color=color2,x=Overall_Time, y=0, label=label_text2), vjust=0, force_pull = 0, nudge_y = 0, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, segment.color="black", fontface="bold", show.legend = F)+
+
+ scale_color_manual(values = c( "mediumseagreen" = "mediumseagreen", "blue" = "blue", "red"="red"))+
+  
+  ggtitle(toupper(paste0("Overall Standings after", Stage_no)))+
+  
+  
+  ggforce::facet_zoom (x=keep=="keep", zoom.size = 1, zoom.data=zoom)+
+  
+  theme(zoom.x = element_rect(fill = "grey90", color = NA))
+
+
+
+P1a<-ggplot(overall_standings2, aes(x= Overall_Time2, y=1))+
+  
+  geom_point(color="white", alpha=0.1)+
+  
+  scale_x_reverse(breaks=overall_standings2$Overall_Time, labels=overall_standings2$Difference)+
+  scale_y_continuous(limits=c(-0.4,2))+
+  
+  theme_light()+
+  theme(axis.text.x = element_text(angle=45, face="bold", size=14, hjust=1))+
+  theme(axis.text.y = element_blank())+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       panel.background = element_blank())+
+  theme(plot.title = element_text(size=20,hjust = 0.5, face="bold"))+
+  
+  geom_hline(yintercept=overall_standings2$Time,linetype="dotted", color = "black", linewidth=0.2 )+
+  labs(x="", y="")+
+  
+  geom_image(data=overall_standings2[(2:(length(competitors)-1)),] ,aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/bike.png"), size = 0.2 )+
+  
+#  geom_image(data=overall_standings2[(2:(length(competitors)-1)),] %>%dplyr::filter(Change==""),aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/bike.png"), size = 0.2 )+ 
+  #geom_image(data=overall_standings2[(2:(length(competitors)-1)),] %>%dplyr::filter(str_detect(Change,"-")==TRUE),aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/red_bike.png"), size = 0.2 )+ 
+ #   geom_image(data=overall_standings2[(2:(length(competitors)-1)),] %>%dplyr::filter(str_detect(Change,"\\+")==TRUE),aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/green_bike.png"), size = 0.2 )+
+  geom_image(data=overall_standings2[c(1),],aes(x= Overall_Time, y=0.3, image = "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/first.png"), size = 0.2, nudge_y=0.05, nudge_x=0.1 )+
+ geom_image(data=overall_standings2[c(17),],aes(x= Overall_Time,y=0.3, image =  "/Users/jonathanderry/Documents/Home/Cycling/TDF_2025/Bikes/last_flip.png"), size = 0.2 )+
+  geom_text_repel(aes(y=0.3,label=Team),color=color,angle=90, vjust=0, force_pull = 0, nudge_y = 1.5, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=6, color="blue",segment.color="black", fontface="bold", min.segment.length = unit(0, 'lines'))+
+  
+#geom_text_repel(aes(label=Change, y=0),color=color2,  vjust=0, force_pull = 0, nudge_x = 0.00, direction="x", segment.size=0.2, max.iter = 1e4, max.time = 1, size=4,segment.color="black", fontface="bold", min.segment.length = Inf, max.overlaps = 100)+
+
+
+ 
+  ggtitle(toupper(paste0("Overall Standings after ", Stage_no)))
+
+
+
+
+first_exceed_index<-NaN
+
+ifelse(is.na(first_exceed_index),
+       ggsave(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no,"_overall_after_",Stage_no ,"_",Sys.Date(), ".jpg"),plot=P1a, height=8, width=18, dpi=400,  units="in", bg = "white"),
+       ggsave(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no,"_overall_after_",Stage_no ,"_",Sys.Date(), ".jpg"),plot=P1, height=12, width=18, dpi=400,  units="in", bg = "white"))
+
+
+
+
+
+
+```
+
+
+```{r Insert Figure2, eval=FALSE, fig.align='center', include=FALSE, out.width="2000px"}
+
+knitr::include_graphics(paste0("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage_no,"_overall_after_",Stage_no ,"_",Sys.Date(), ".jpg"))
+
+```
+
+```{r points table, eval=FALSE, include=FALSE}
+
+results<-stage_df2
+
+
+stages<-unique(results$Stage_no)
+
+
+final<-data.frame()
+
+
+for (i in 1:length(stages)){
+ 
+  stage<-stages[i]
+  
+   temp<-results %>% as.data.frame() %>% dplyr::filter(Stage_no == stages[i]) %>%  dplyr::group_by(Team.x)  %>% dplyr::arrange(total_seconds, Rank) %>% slice_head(n=3) %>% ungroup() %>% dplyr::group_by(Team.x) %>% summarise(Overall_Time=sum(total_seconds), top3_rank=mean(Rank))
+  
+  
+  
+  All_Rank=results %>% as.data.frame() %>% dplyr::filter(Stage_no == stages[i]) %>%  dplyr::group_by(Team.x)  %>% dplyr::arrange(total_seconds, Rank) %>%  ungroup() %>% dplyr::group_by(Team.x) %>% summarise( all_rank=mean(Rank, na.rm=T))
+
+  
+  temp2<-merge(temp, All_Rank, by="Team.x")  %>% dplyr::arrange(Overall_Time, top3_rank, all_rank) %>% mutate(Stage=stage, Position=c("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th"))
+  
+final<-rbind(temp2, final)
+  
+}
+
+podiums<-final %>% dplyr::group_by(Position, Team.x) %>% tally() %>% dplyr::filter(Position %in% c("1st", "2nd", "3rd")) %>% pivot_wider(names_from = "Position", values_from = "n", id_cols = "Team.x")
+
+#missing<-data.frame(Team.x=setdiff(unique(final$Team.x), podiums$Team.x), `1st`=NA, `2nd`=NA, `3rd`=NA)
+#colnames(missing)=colnames(podiums)
+
+#podiums<-rbind(podiums, missing)
+
+podiums[is.na(podiums)]<-0
+
+podiums$Score<-podiums$`1st`*10 + podiums$`2nd`*5 + podiums$`3rd`*2
+
+podiums<-podiums %>% dplyr::arrange(-Score) %>% rename(Team=Team.x)
+
+
+
+cols <- matrix("black", nrow(podiums), ncol(podiums))
+cols[1,1:ncol(podiums)] <- c("seagreen")
+
+cols2<-matrix("white", nrow(podiums), ncol(podiums))
+
+
+t <- tableGrob(podiums, rows=NULL, theme = ttheme_default(colhead = list(fg_params = list(rot = 90,cex = 2)), core = list(fg_params = list(cex = 2,  col = cols, fontface="bold" ), bg_params=list(fill=cols2)), padding = unit(c(10, 12), "mm")))
+
+title<-textGrob(paste( "Points Competition Standings after ", toupper(Stage),sep=" "), gp = gpar(fontsize = 20, fontface = "bold"))
+t <- gtable_add_rows(t, heights = grobHeight(title) + unit(20, "mm"), pos = 0)
+
+t<- gtable_add_grob(t, title, t = 1, l = 1, r = ncol(t))
+
+caption_text <- textGrob("Points: 10 for 1st, 5 for 2nd, 2 for 3rd\n", 
+                         gp = gpar(fontsize = 20), 
+                         hjust = 1, x=0.95) # Adjust justification and position as needed
+
+
+t<-grid.arrange(t, caption_text, 
+             ncol = 1, 
+             heights = unit.c(unit(1, "npc") - grobHeight(caption_text), 
+                              grobHeight(caption_text)))
+
+
+ggsave(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/", Stage, "_overall_points_table_after_",  Stage,"_", Sys.Date(),".jpg", sep=""),t, height=15, width=12, dpi=1000,  units="in", bg = "white")
+
+ggsave(paste("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/current_points.jpg", sep=""),t, height=15, width=12, dpi=1000,  units="in", bg = "white")
+```
+
+
+```{r Insert points table, eval=FALSE, fig.align='center', include=FALSE, out.width="2000px"}
+
+knitr::include_graphics("/Users/jonathanderry/Documents/Home/Cycling/TDF_2026/2026_Results/current_points.jpg")
+
+```

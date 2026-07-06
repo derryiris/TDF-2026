@@ -1,0 +1,137 @@
+"Rider_1"	"Name"	"Team.x"	"Rider"	"Value"	"Rank"	"Rider.No."	"Team.y"	"Times"	"Gap"	"B"	"P"	"Stage_no"	"Hour"	"Minute"	"Second"	"total_seconds"	"time"
+"A. BAUDIN"	"Alain"	"The Eight Musketeers"	"Alex Baudin"	1	15	43	"EF EDUCATION - EASYPOST"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"A. BAUDIN"	"Ashley"	"Le Grand Fromage"	"Alex Baudin"	1	15	43	"EF EDUCATION - EASYPOST"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"A. BAUDIN"	"Jacques"	"Team Spanky"	"Alex Baudin"	1	15	43	"EF EDUCATION - EASYPOST"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"A. TIBERI"	"Pete"	"The Clean Team"	"Antonio Tiberi"	1	46	77	"BAHRAIN VICTORIOUS"	"03h 45' 45''"	"+ 00h 05' 44''"	"-"	"-"	"stage-2"	3	45	45	13545	3H 45M 45S
+"A. TIBERI"	"Ian"	"Shed Brewery"	"Antonio Tiberi"	1	46	77	"BAHRAIN VICTORIOUS"	"03h 45' 45''"	"+ 00h 05' 44''"	"-"	"-"	"stage-2"	3	45	45	13545	3H 45M 45S
+"A. TIBERI"	"Judy"	"Barcelona Breakaway"	"Antonio Tiberi"	1	46	77	"BAHRAIN VICTORIOUS"	"03h 45' 45''"	"+ 00h 05' 44''"	"-"	"-"	"stage-2"	3	45	45	13545	3H 45M 45S
+"A. YATES"	"Matthew"	"Last Minute Lemmings"	"Adam Yates"	1	18	8	"UAE TEAM EMIRATES XRG"	"03h 40' 40''"	"+ 00h 00' 39''"	"-"	"-"	"stage-2"	3	40	40	13240	3H 40M 40S
+"A. YATES"	"Ian"	"Shed Brewery"	"Adam Yates"	1	18	8	"UAE TEAM EMIRATES XRG"	"03h 40' 40''"	"+ 00h 00' 39''"	"-"	"-"	"stage-2"	3	40	40	13240	3H 40M 40S
+"A. YATES"	"Janet"	"No Idea"	"Adam Yates"	1	18	8	"UAE TEAM EMIRATES XRG"	"03h 40' 40''"	"+ 00h 00' 39''"	"-"	"-"	"stage-2"	3	40	40	13240	3H 40M 40S
+"A. YATES"	"Conor"	"iPaddy Rides Again"	"Adam Yates"	1	18	8	"UAE TEAM EMIRATES XRG"	"03h 40' 40''"	"+ 00h 00' 39''"	"-"	"-"	"stage-2"	3	40	40	13240	3H 40M 40S
+"A. YATES"	"Judy"	"Barcelona Breakaway"	"Adam Yates"	1	18	8	"UAE TEAM EMIRATES XRG"	"03h 40' 40''"	"+ 00h 00' 39''"	"-"	"-"	"stage-2"	3	40	40	13240	3H 40M 40S
+"B. GIRMAY"	"Chris & Jill"	"Mystery Package"	"Biniam Girmay "	1	157	131	"NSN CYCLING TEAM"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"B. GIRMAY"	"Dirk"	"Tintin en Velo"	"Biniam Girmay "	1	157	131	"NSN CYCLING TEAM"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"B. GIRMAY"	"Mary"	"The Lion Kings"	"Biniam Girmay "	1	157	131	"NSN CYCLING TEAM"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"B. HEALY"	"Jonathan"	"Pedal Dammit"	"Ben Healy"	1	107	44	"EF EDUCATION - EASYPOST"	"03h 52' 17''"	"+ 00h 12' 16''"	"-"	"-"	"stage-2"	3	52	17	13937	3H 52M 17S
+"B. HEALY"	"James"	"Škoda Drivers"	"Ben Healy"	1	107	44	"EF EDUCATION - EASYPOST"	"03h 52' 17''"	"+ 00h 12' 16''"	"-"	"-"	"stage-2"	3	52	17	13937	3H 52M 17S
+"B. HEALY"	"Matthew"	"Last Minute Lemmings"	"Ben Healy"	1	107	44	"EF EDUCATION - EASYPOST"	"03h 52' 17''"	"+ 00h 12' 16''"	"-"	"-"	"stage-2"	3	52	17	13937	3H 52M 17S
+"B. HEALY"	"Pete"	"The Clean Team"	"Ben Healy"	1	107	44	"EF EDUCATION - EASYPOST"	"03h 52' 17''"	"+ 00h 12' 16''"	"-"	"-"	"stage-2"	3	52	17	13937	3H 52M 17S
+"B. HEALY"	"Julie"	"Can’t catch me 🙂"	"Ben Healey"	1	107	44	"EF EDUCATION - EASYPOST"	"03h 52' 17''"	"+ 00h 12' 16''"	"-"	"-"	"stage-2"	3	52	17	13937	3H 52M 17S
+"B. HEALY"	"Jacques"	"Team Spanky"	"Ben Healy"	1	107	44	"EF EDUCATION - EASYPOST"	"03h 52' 17''"	"+ 00h 12' 16''"	"-"	"-"	"stage-2"	3	52	17	13937	3H 52M 17S
+"B. O'CONNOR"	"Conor"	"iPaddy Rides Again"	"Ben O'Connor"	1	40	111	"TEAM JAYCO ALULA"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"B. O'CONNOR"	"Matthew"	"Last Minute Lemmings"	"Ben O'Connor"	1	40	111	"TEAM JAYCO ALULA"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"C. UIJTDEBROEKS"	"Dirk"	"Tintin en Velo"	"Cian Uijtdebroeks"	1	17	141	"MOVISTAR TEAM"	"03h 40' 28''"	"+ 00h 00' 27''"	"-"	"-"	"stage-2"	3	40	28	13228	3H 40M 28S
+"C. UIJTDEBROEKS"	"Ashley"	"Le Grand Fromage"	"Cian Uijtdebroeks"	1	17	141	"MOVISTAR TEAM"	"03h 40' 28''"	"+ 00h 00' 27''"	"-"	"-"	"stage-2"	3	40	28	13228	3H 40M 28S
+"C. UIJTDEBROEKS"	"Pete"	"The Clean Team"	"Cian Uijtdebroeks"	1	17	141	"MOVISTAR TEAM"	"03h 40' 28''"	"+ 00h 00' 27''"	"-"	"-"	"stage-2"	3	40	28	13228	3H 40M 28S
+"D. GEE"	"Mary"	"The Lion Kings"	"Derek Gee-West"	1	45	32	"LIDL-TREK"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"D. GEE"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Derek Gee-West"	1	45	32	"LIDL-TREK"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"D. GEE"	"Janet"	"No Idea"	"Derek Gee-West"	1	45	32	"LIDL-TREK"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"D. GODON"	"Jacques"	"Team Spanky"	"Dorian Godon"	1	121	85	"NETCOMPANY INEOS CYCLING TEAM"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"D. HOOLE"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Daan Hoole"	1	148	54	"DECATHLON CMA CGM TEAM"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"D. PIGANZOLI"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Davide Piganzoli"	1	28	18	"TEAM VISMA | LEASE A BIKE"	"03h 41' 11''"	"+ 00h 01' 10''"	"-"	"-"	"stage-2"	3	41	11	13271	3H 41M 11S
+"D. PIGANZOLI"	"Pete"	"The Clean Team"	"Davide Piganzoli"	1	28	18	"TEAM VISMA | LEASE A BIKE"	"03h 41' 11''"	"+ 00h 01' 10''"	"-"	"-"	"stage-2"	3	41	11	13271	3H 41M 11S
+"E. BERNAL"	"Chris & Jill"	"Mystery Package"	"Egan Bernal "	1	23	81	"NETCOMPANY INEOS CYCLING TEAM"	"03h 40' 48''"	"+ 00h 00' 47''"	"-"	"-"	"stage-2"	3	40	48	13248	3H 40M 48S
+"E. RUBIO"	"Ian"	"Shed Brewery"	"Einer Rubio"	1	119	148	"MOVISTAR TEAM"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"F. ENGELHARDT"	"Julie"	"Can’t catch me 🙂"	"Felix Engelhadt"	1	112	114	"TEAM JAYCO ALULA"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"F. GANNA"	"Mary"	"The Lion Kings"	"Filipino Ganna"	1	169	84	"NETCOMPANY INEOS CYCLING TEAM"	"03h 54' 44''"	"+ 00h 14' 43''"	"-"	"-"	"stage-2"	3	54	44	14084	3H 54M 44S
+"F. GANNA"	"Ashley"	"Le Grand Fromage"	"Filipino Ganna"	1	169	84	"NETCOMPANY INEOS CYCLING TEAM"	"03h 54' 44''"	"+ 00h 14' 43''"	"-"	"-"	"stage-2"	3	54	44	14084	3H 54M 44S
+"F. LIPOWITZ"	"Pete"	"The Clean Team"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Jacques"	"Team Spanky"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Conor"	"iPaddy Rides Again"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Alex"	"Team Saucisson"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Judy"	"Barcelona Breakaway"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Jonathan"	"Pedal Dammit"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Ian"	"Shed Brewery"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Dirk"	"Tintin en Velo"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. LIPOWITZ"	"Matthew"	"Last Minute Lemmings"	"Florian Lipowitz"	1	16	25	"RED BULL - BORA - HANSGROHE"	"03h 40' 11''"	"+ 00h 00' 10''"	"-"	"-"	"stage-2"	3	40	11	13211	3H 40M 11S
+"F. WRIGHT"	"Janet"	"No Idea"	"Fred Wright"	1	168	178	"PINARELLO-Q36.5 PRO CYCLING TEAM"	"03h 54' 21''"	"+ 00h 14' 20''"	"-"	"-"	"stage-2"	3	54	21	14061	3H 54M 21S
+"G. MARTIN GUYONNET"	"Alain"	"The Eight Musketeers"	"Guillaume Martin-Guyonnet"	1	42	186	"GROUPAMA-FDJ UNITED"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"G. ZIMMERMANN"	"Alex"	"Team Saucisson"	"Georg Zimmermann"	1	58	158	"LOTTO INTERMARCHE"	"03h 49' 29''"	"+ 00h 09' 28''"	"-"	"-"	"stage-2"	3	49	29	13769	3H 49M 29S
+"I. DEL TORO"	"Julie"	"Can’t catch me 🙂"	"Isaac del Toro"	1	1	2	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 10''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"J. ABRAHAMSEN"	"James"	"Škoda Drivers"	"Jonas Abrahamsen"	1	114	122	"UNO-X MOBILITY"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"J. AYUSO"	"Judy"	"Barcelona Breakaway"	"Juan Ayuso"	1	12	31	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"J. AYUSO"	"Pete"	"The Clean Team"	"Juan Ayuso"	1	12	31	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"J. AYUSO"	"James"	"Škoda Drivers"	"Juan Ayuso"	1	12	31	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"J. AYUSO"	"Dirk"	"Tintin en Velo"	"Juan Ayuso"	1	12	31	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"J. AYUSO"	"Conor"	"iPaddy Rides Again"	"Juan Ayuso"	1	12	31	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"J. AYUSO"	"Alex"	"Team Saucisson"	"Juan Ayuso"	1	12	31	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"J. HINDLEY"	"Mary"	"The Lion Kings"	"Jai Hindley"	1	36	24	"RED BULL - BORA - HANSGROHE"	"03h 41' 56''"	"+ 00h 01' 55''"	"-"	"-"	"stage-2"	3	41	56	13316	3H 41M 56S
+"J. HINDLEY"	"Janet"	"No Idea"	"Jai Hindley"	1	36	24	"RED BULL - BORA - HANSGROHE"	"03h 41' 56''"	"+ 00h 01' 55''"	"-"	"-"	"stage-2"	3	41	56	13316	3H 41M 56S
+"J. JEGAT"	"Alain"	"The Eight Musketeers"	"Jordan Jegat"	1	29	201	"TOTALENERGIES"	"03h 41' 11''"	"+ 00h 01' 10''"	"-"	"-"	"stage-2"	3	41	11	13271	3H 41M 11S
+"J. JEGAT"	"Jonathan"	"Pedal Dammit"	"Jordan Jegat"	1	29	201	"TOTALENERGIES"	"03h 41' 11''"	"+ 00h 01' 10''"	"-"	"-"	"stage-2"	3	41	11	13271	3H 41M 11S
+"J. STEWART"	"Janet"	"No Idea"	"Jake Stewart"	1	155	137	"NSN CYCLING TEAM"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"J. TARLING"	"Chris & Jill"	"Mystery Package"	"Joshua Tarling"	1	85	87	"NETCOMPANY INEOS CYCLING TEAM"	"03h 51' 07''"	"+ 00h 11' 06''"	"-"	"-"	"stage-2"	3	51	7	13867	3H 51M 7S
+"J. TARLING"	"Janet"	"No Idea"	"Josh Tarling"	1	85	87	"NETCOMPANY INEOS CYCLING TEAM"	"03h 51' 07''"	"+ 00h 11' 06''"	"-"	"-"	"stage-2"	3	51	7	13867	3H 51M 7S
+"J. VINGEGAARD"	"Ashley"	"Le Grand Fromage"	"Jonas Vingegaard"	1	4	11	"TEAM VISMA | LEASE A BIKE"	"03h 40' 01''"	"-"	"-"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"J. VINGEGAARD"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Jonas Vingegaard"	1	4	11	"TEAM VISMA | LEASE A BIKE"	"03h 40' 01''"	"-"	"-"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"K. VAUQUELIN"	"Chris & Jill"	"Mystery Package"	"Kévin Vauquelin "	1	51	88	"NETCOMPANY INEOS CYCLING TEAM"	"03h 46' 53''"	"+ 00h 06' 52''"	"-"	"-"	"stage-2"	3	46	53	13613	3H 46M 53S
+"K. VAUQUELIN"	"Ian"	"Shed Brewery"	"Kévin Vauquelin"	1	51	88	"NETCOMPANY INEOS CYCLING TEAM"	"03h 46' 53''"	"+ 00h 06' 52''"	"-"	"-"	"stage-2"	3	46	53	13613	3H 46M 53S
+"K. VAUQUELIN"	"Jacques"	"Team Spanky"	"Kevin Vauquelin"	1	51	88	"NETCOMPANY INEOS CYCLING TEAM"	"03h 46' 53''"	"+ 00h 06' 52''"	"-"	"-"	"stage-2"	3	46	53	13613	3H 46M 53S
+"K. VAUQUELIN"	"Alain"	"The Eight Musketeers"	"Kévin Vauquelin"	1	51	88	"NETCOMPANY INEOS CYCLING TEAM"	"03h 46' 53''"	"+ 00h 06' 52''"	"-"	"-"	"stage-2"	3	46	53	13613	3H 46M 53S
+"L. ASKEY"	"Janet"	"No Idea"	"Lewis Askey"	1	110	132	"NSN CYCLING TEAM"	"03h 52' 31''"	"+ 00h 12' 30''"	"-"	"-"	"stage-2"	3	52	31	13951	3H 52M 31S
+"L. MARTINEZ"	"Ashley"	"Le Grand Fromage"	"Lenny Martinez"	1	8	71	"BAHRAIN VICTORIOUS"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"L. MARTINEZ"	"Mary"	"The Lion Kings"	"Lenny Martinez"	1	8	71	"BAHRAIN VICTORIOUS"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"L. MARTINEZ"	"James"	"Škoda Drivers"	"Lenny Martinez"	1	8	71	"BAHRAIN VICTORIOUS"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"L. MARTINEZ"	"Alain"	"The Eight Musketeers"	"Lenny Martinez"	1	8	71	"BAHRAIN VICTORIOUS"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"L. MARTINEZ"	"Matthew"	"Last Minute Lemmings"	"Lenny Martinez"	1	8	71	"BAHRAIN VICTORIOUS"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"L. MARTINEZ"	"Jacques"	"Team Spanky"	"Lenny Martinez"	1	8	71	"BAHRAIN VICTORIOUS"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"L. PLAPP"	"Jonathan"	"Pedal Dammit"	"Luke Plapp"	1	44	117	"TEAM JAYCO ALULA"	"03h 45' 32''"	"+ 00h 05' 31''"	"-"	"-"	"stage-2"	3	45	32	13532	3H 45M 32S
+"L. VAN EETVELT"	"Ian"	"Shed Brewery"	"Lennert Van Eetvelt"	1	11	156	"LOTTO INTERMARCHE"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"M. JORGENSON"	"Conor"	"iPaddy Rides Again"	"Matteo Jorgenson "	1	48	16	"TEAM VISMA | LEASE A BIKE"	"03h 46' 04''"	"+ 00h 06' 03''"	"-"	"-"	"stage-2"	3	46	4	13564	3H 46M 4S
+"M. JORGENSON"	"Judy"	"Barcelona Breakaway"	"Matteo Jorgenson "	1	48	16	"TEAM VISMA | LEASE A BIKE"	"03h 46' 04''"	"+ 00h 06' 03''"	"-"	"-"	"stage-2"	3	46	4	13564	3H 46M 4S
+"M. JORGENSON"	"Ian"	"Shed Brewery"	"Matteo Jorgenson "	1	48	16	"TEAM VISMA | LEASE A BIKE"	"03h 46' 04''"	"+ 00h 06' 03''"	"-"	"-"	"stage-2"	3	46	4	13564	3H 46M 4S
+"M. JORGENSON"	"Matthew"	"Last Minute Lemmings"	"Matteo Jorgenson"	1	48	16	"TEAM VISMA | LEASE A BIKE"	"03h 46' 04''"	"+ 00h 06' 03''"	"-"	"-"	"stage-2"	3	46	4	13564	3H 46M 4S
+"M. JORGENSON"	"Chris & Jill"	"Mystery Package"	"Matteo Jorgenson "	1	48	16	"TEAM VISMA | LEASE A BIKE"	"03h 46' 04''"	"+ 00h 06' 03''"	"-"	"-"	"stage-2"	3	46	4	13564	3H 46M 4S
+"M. PEDERSEN"	"Chris & Jill"	"Mystery Package"	"Mads Pedersen"	1	156	33	"LIDL-TREK"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"M. PEDERSEN"	"James"	"Škoda Drivers"	"Mads Pedersen"	1	156	33	"LIDL-TREK"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"M. SKJELMOSE"	"Judy"	"Barcelona Breakaway"	"Mattias Skjelmose"	1	5	35	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"M. SKJELMOSE"	"Mary"	"The Lion Kings"	"Mattias Skjelmose"	1	5	35	"LIDL-TREK"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"M. STORER"	"Alex"	"Team Saucisson"	"Michael Storer"	1	138	196	"TUDOR PRO CYCLING TEAM"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"M. VACEK"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Mathias Vacek"	1	38	37	"LIDL-TREK"	"03h 45' 03''"	"+ 00h 05' 02''"	"-"	"-"	"stage-2"	3	45	3	13503	3H 45M 3S
+"O. KOOIJ"	"Julie"	"Can’t catch me 🙂"	"Olaf Kooij"	1	180	55	"DECATHLON CMA CGM TEAM"	"03h 58' 09''"	"+ 00h 18' 08''"	"-"	"-"	"stage-2"	3	58	9	14289	3H 58M 9S
+"O. KOOIJ"	"Ashley"	"Le Grand Fromage"	"Olaf Kooij"	1	180	55	"DECATHLON CMA CGM TEAM"	"03h 58' 09''"	"+ 00h 18' 08''"	"-"	"-"	"stage-2"	3	58	9	14289	3H 58M 9S
+"O. KOOIJ"	"James"	"Škoda Drivers"	"Olav Kooij"	1	180	55	"DECATHLON CMA CGM TEAM"	"03h 58' 09''"	"+ 00h 18' 08''"	"-"	"-"	"stage-2"	3	58	9	14289	3H 58M 9S
+"P. HAGENES"	"Julie"	"Can’t catch me 🙂"	"Per Strand Hagenes"	1	171	15	"TEAM VISMA | LEASE A BIKE"	"03h 55' 03''"	"+ 00h 15' 02''"	"-"	"-"	"stage-2"	3	55	3	14103	3H 55M 3S
+"P. SEIXAS"	"James"	"Škoda Drivers"	"Paul Seixas"	1	9	51	"DECATHLON CMA CGM TEAM"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"P. SEIXAS"	"Alain"	"The Eight Musketeers"	"Paul Seixas"	1	9	51	"DECATHLON CMA CGM TEAM"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"Q. SIMMONS"	"Jonathan"	"Pedal Dammit"	"Quin Simmons"	1	153	34	"LIDL-TREK"	"03h 53' 57''"	"+ 00h 13' 56''"	"-"	"-"	"stage-2"	3	53	57	14037	3H 53M 57S
+"R. CARAPAZ"	"Conor"	"iPaddy Rides Again"	"Richard Carapaz"	1	14	41	"EF EDUCATION - EASYPOST"	"03h 40' 08''"	"+ 00h 00' 07''"	"-"	"-"	"stage-2"	3	40	8	13208	3H 40M 8S
+"R. CARAPAZ"	"Pete"	"The Clean Team"	"Richard Carapaz"	1	14	41	"EF EDUCATION - EASYPOST"	"03h 40' 08''"	"+ 00h 00' 07''"	"-"	"-"	"stage-2"	3	40	8	13208	3H 40M 8S
+"R. CARAPAZ"	"Judy"	"Barcelona Breakaway"	"Richard Carapaz"	1	14	41	"EF EDUCATION - EASYPOST"	"03h 40' 08''"	"+ 00h 00' 07''"	"-"	"-"	"stage-2"	3	40	8	13208	3H 40M 8S
+"R. CARAPAZ"	"Alex"	"Team Saucisson"	"Richard Carapaz"	1	14	41	"EF EDUCATION - EASYPOST"	"03h 40' 08''"	"+ 00h 00' 07''"	"-"	"-"	"stage-2"	3	40	8	13208	3H 40M 8S
+"R. GARCIA"	"Alex"	"Team Saucisson"	"Raúl Garcia Pierna"	1	90	144	"MOVISTAR TEAM"	"03h 51' 07''"	"+ 00h 11' 06''"	"-"	"-"	"stage-2"	3	51	7	13867	3H 51M 7S
+"R. GREGOIRE"	"Alain"	"The Eight Musketeers"	"Romain Grégoire"	1	7	181	"GROUPAMA-FDJ UNITED"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"S. KUSS"	"Julie"	"Can’t catch me 🙂"	"Sep Kuss"	1	52	17	"TEAM VISMA | LEASE A BIKE"	"03h 46' 53''"	"+ 00h 06' 52''"	"-"	"-"	"stage-2"	3	46	53	13613	3H 46M 53S
+"S. KUSS"	"Conor"	"iPaddy Rides Again"	"Sep Kuss"	1	52	17	"TEAM VISMA | LEASE A BIKE"	"03h 46' 53''"	"+ 00h 06' 52''"	"-"	"-"	"stage-2"	3	46	53	13613	3H 46M 53S
+"S. WAERENSKJOLD"	"Julie"	"Can’t catch me 🙂"	"Søren Wærenskjold"	1	172	128	"UNO-X MOBILITY"	"03h 55' 07''"	"+ 00h 15' 06''"	"-"	"-"	"stage-2"	3	55	7	14107	3H 55M 7S
+"T. ARENSMAN"	"Ashley"	"Le Grand Fromage"	"Thymen Arensman"	1	21	82	"NETCOMPANY INEOS CYCLING TEAM"	"03h 40' 48''"	"+ 00h 00' 47''"	"-"	"-"	"stage-2"	3	40	48	13248	3H 40M 48S
+"T. ARENSMAN"	"Jonathan"	"Pedal Dammit"	"Thymen Arensman"	1	21	82	"NETCOMPANY INEOS CYCLING TEAM"	"03h 40' 48''"	"+ 00h 00' 47''"	"-"	"-"	"stage-2"	3	40	48	13248	3H 40M 48S
+"T. ARENSMAN"	"Mary"	"The Lion Kings"	"Thymen Arensman"	1	21	82	"NETCOMPANY INEOS CYCLING TEAM"	"03h 40' 48''"	"+ 00h 00' 47''"	"-"	"-"	"stage-2"	3	40	48	13248	3H 40M 48S
+"T. ARENSMAN"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Thymen Arensman"	1	21	82	"NETCOMPANY INEOS CYCLING TEAM"	"03h 40' 48''"	"+ 00h 00' 47''"	"-"	"-"	"stage-2"	3	40	48	13248	3H 40M 48S
+"T. ARENSMAN"	"Dirk"	"Tintin en Velo"	"Thymen Arensman"	1	21	82	"NETCOMPANY INEOS CYCLING TEAM"	"03h 40' 48''"	"+ 00h 00' 47''"	"-"	"-"	"stage-2"	3	40	48	13248	3H 40M 48S
+"T. JOHANNESSEN"	"Ashley"	"Le Grand Fromage"	"Tobias Halland Johannessen"	1	6	121	"UNO-X MOBILITY"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"T. JOHANNESSEN"	"Julie"	"Can’t catch me 🙂"	"Tobias Halland Johannessen"	1	6	121	"UNO-X MOBILITY"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"T. MERLIER"	"Jacques"	"Team Spanky"	"Tim Merlier"	1	147	91	"SOUDAL QUICK-STEP"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"T. MERLIER"	"Jack"	"You've Got to Pick a Vacek or Hoole"	"Tim Merlier"	1	147	91	"SOUDAL QUICK-STEP"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"T. MERLIER"	"James"	"Škoda Drivers"	"Tim Merlier"	1	147	91	"SOUDAL QUICK-STEP"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"T. MERLIER"	"Chris & Jill"	"Mystery Package"	"Tim Merlier "	1	147	91	"SOUDAL QUICK-STEP"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"T. MERLIER"	"Dirk"	"Tintin en Velo"	"Tim Merlier"	1	147	91	"SOUDAL QUICK-STEP"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"T. MERLIER"	"Alex"	"Team Saucisson"	"Tim Merlier"	1	147	91	"SOUDAL QUICK-STEP"	"03h 53' 34''"	"+ 00h 13' 33''"	"-"	"-"	"stage-2"	3	53	34	14014	3H 53M 34S
+"T. PIDCOCK"	"Ian"	"Shed Brewery"	"Tom Pidcock"	1	10	171	"PINARELLO-Q36.5 PRO CYCLING TEAM"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"T. PIDCOCK"	"Janet"	"No Idea"	"Tom Pidcock"	1	10	171	"PINARELLO-Q36.5 PRO CYCLING TEAM"	"03h 40' 04''"	"+ 00h 00' 03''"	"-"	"-"	"stage-2"	3	40	4	13204	3H 40M 4S
+"T. POGACAR"	"Chris & Jill"	"Mystery Package"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Mary"	"The Lion Kings"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Alex"	"Team Saucisson"	"Tadej Pogacar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Conor"	"iPaddy Rides Again"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Matthew"	"Last Minute Lemmings"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Jonathan"	"Pedal Dammit"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Pete"	"The Clean Team"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Judy"	"Barcelona Breakaway"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Jacques"	"Team Spanky"	"Tadej Pogacar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. POGACAR"	"Dirk"	"Tintin en Velo"	"Tadej Pogačar"	1	2	1	"UAE TEAM EMIRATES XRG"	"03h 40' 01''"	"-"	"B : 6''"	"-"	"stage-2"	3	40	1	13201	3H 40M 1S
+"T. WELLENS"	"Jonathan"	"Pedal Dammit"	"Tim Wellens"	1	99	7	"UAE TEAM EMIRATES XRG"	"03h 52' 09''"	"+ 00h 12' 08''"	"-"	"-"	"stage-2"	3	52	9	13929	3H 52M 9S
+"V. CAMPENAERTS"	"Matthew"	"Last Minute Lemmings"	"Victor Campenaerts"	1	98	14	"TEAM VISMA | LEASE A BIKE"	"03h 52' 09''"	"+ 00h 12' 08''"	"-"	"-"	"stage-2"	3	52	9	13929	3H 52M 9S
+"V. PARET PEINTRE"	"Dirk"	"Tintin en Velo"	"Valentin Paret-Peintre"	1	93	93	"SOUDAL QUICK-STEP"	"03h 52' 09''"	"+ 00h 12' 08''"	"-"	"-"	"stage-2"	3	52	9	13929	3H 52M 9S
+"V. PARET PEINTRE"	"Alain"	"The Eight Musketeers"	"Valentin Paret-Peintre"	1	93	93	"SOUDAL QUICK-STEP"	"03h 52' 09''"	"+ 00h 12' 08''"	"-"	"-"	"stage-2"	3	52	9	13929	3H 52M 9S
