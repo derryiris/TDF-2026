@@ -18,6 +18,8 @@ navbar:
           href: stage-2_Daily_Report.html
         - text: "Stage 3"
           href: stage-3_Daily_Report.html
+        - text: "Stage 4"
+          href: stage-4_Daily_Report.html
    
     - text: "Standings"
       href:
