@@ -1,0 +1,77 @@
+---
+name: "distill"
+output_dir: "_site"
+title: ""
+navbar:
+  right:
+    - text: "Riders"
+      href: https://www.procyclingstats.com/race/tour-de-france/2026/startlist
+    - text: "Route"
+      href: https://www.letour.fr/en/overall-route
+  left:
+    - text: "Results"
+      href: 
+      menu:
+        - text: "Stage 1"
+          href: stage-1_Daily_Report.html
+        - text: "Stage 2"
+          href: stage-2_Daily_Report.html
+        - text: "Stage 3"
+          href: stage-3_Daily_Report.html
+        - text: "Stage 4"
+          href: stage-4_Daily_Report.html
+        - text: "Stage 5"
+          href: stage-5_Daily_Report.html
+        - text: "Stage 6"
+          href: stage-6_Daily_Report.html
+        - text: "Stage 7"
+          href: stage-7_Daily_Report.html
+        - text: "Stage 8"
+          href: stage-8_Daily_Report.html
+        - text: "Stage 9"
+          href: stage-9_Daily_Report.html
+        - text: "Stage 10"
+          href: stage-10_Daily_Report.html
+        - text: "Stage 11"
+          href: stage-11_Daily_Report.html
+        - text: "Stage 12"
+          href: stage-12_Daily_Report.html
+        - text: "Stage 13"
+          href: stage-13_Daily_Report.html
+        - text: "Stage 14"
+          href: stage-14_Daily_Report.html
+        - text: "Stage 15"
+          href: stage-15_Daily_Report.html
+        - text: "Stage 16"
+          href: stage-16_Daily_Report.html
+        - text: "Stage 17"
+          href: stage-17_Daily_Report.html
+        - text: "Stage 18"
+          href: stage-18_Daily_Report.html
+        - text: "Stage 19"
+          href: stage-19_Daily_Report.html
+        - text: "Stage 20"
+          href: stage-20_Daily_Report.html
+        - text: "Stage 21"
+          href: stage-21_Daily_Report.html
+  
+    - text: "Standings"
+      href:
+      menu:
+        - text: "Overall Standings"  
+          href: Current_overall.html
+        - text: "Points Standings"  
+          href: Current_points.html
+    - text: "Teams"
+      href: Teams.html
+    - text: "Rules"
+      href: rules.html
+          
+    - icon: logo.png
+      href: https://github.com/rstudio/distill
+      
+output:
+distill::distill_article:
+  css: styles.css
+
+---
